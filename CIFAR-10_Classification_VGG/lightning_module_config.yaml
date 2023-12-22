@@ -1,0 +1,18 @@
+optimizer_cls: torch.optim.AdamW
+loss_fn: torch.nn.CrossEntropyLoss
+metric_cls: torchmetrics.Accuracy
+scheduler_cls: 'torch.optim.lr_scheduler.OneCycleLR'
+scheduler_options: {'monitor': 'val_metric', 'interval': 'step', 'frequency': 1}    
+scheduler_params: {'max_lr':0.01, 'epochs': 10, 'steps_per_epoch':625, 'pct_start':0.3 }
+
+others:
+  optimizer_params:
+    weight_decay: 0
+  num_classes: 10
+  learning_rate: 0.0001
+  log_every_n_steps: 1
+  log_test_metrics: True
+  display_metrics: True
+#   lower_lr_layers: ["features.0", "features.2"]  # Customize with your actual layer names
+#   higher_lr_layers: ["classifier.6"]  
+
